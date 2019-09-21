@@ -24,5 +24,12 @@ namespace catmash.IServices
         /// <param name="pId"></param>
         /// <returns></returns>
         Cat GetCatById(string pId);
+
+        /// <summary>
+        /// Voter pour un chat
+        /// </summary>
+        /// <param name="pId">Id du chat</param>
+        /// <returns>Retourn le chat avec son nouveau score</returns>
+        Cat VoteForCatById(string pId);
     }
 }

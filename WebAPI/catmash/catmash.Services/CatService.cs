@@ -69,5 +69,25 @@ namespace catmash.Services
 
             return results;
         }
+
+        /// <summary>
+        /// Voter pour un chat
+        /// </summary>
+        /// <param name="pId">Id du chat</param>
+        /// <returns>Retourn le chat avec son nouveau score</returns>
+        public Cat VoteForCatById(string pId)
+        {
+            Cat cat = this.GetCatById(pId);
+            if (cat == null)
+                throw new KeyNotFoundException();
+
+            cat.Score = cat.Score + 1;
+
+            _dbContext.Cat.Update(cat);
+
+            _dbContext.SaveChanges();
+
+            return this.GetCatById(pId);
+        }
     }
 }

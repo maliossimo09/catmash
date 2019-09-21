@@ -55,11 +55,22 @@ namespace catmash.Test
         /// Doit retourner le chat avec l'id tt
         /// </summary>
         [TestMethod]
-        public void ShouldGetCatWithttID()
+        public void ShouldGetCatByID()
         {
             Cat cat = _catService.GetCatById("tt");
             Assert.AreEqual("tt", cat.Id);
         }
 
+
+        /// <summary>
+        /// Le score du chat doit augmenter si on vote pour lui
+        /// </summary>
+        [TestMethod]
+        public void ShouldScoreIncreaseAfterVote()
+        {
+            Cat catBeforeVote = _catService.GetCatById("tt");
+            Cat catAfterVote = _catService.VoteForCatById("tt");
+            Assert.IsTrue(catBeforeVote.Score + 1 == catAfterVote.Score);
+        }
     }
 }
