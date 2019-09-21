@@ -44,5 +44,13 @@ namespace catmash.Test
             List<Cat> catsList = _populateBDD.GetCatsFromFile(_filePath);
             Assert.IsTrue(catsList.Count > 0);
         }
+
+        [TestMethod]
+        public void ShouldAddCatsToDatabase()
+        {
+            List<Cat> catsList = _populateBDD.GetCatsFromFile(_filePath);
+            List<Cat> catsListBDD = _populateBDD.CreateCatsFromFile(_filePath);
+            Assert.AreEqual(catsList.Count, catsListBDD.Count);
+        }
     }
 }
