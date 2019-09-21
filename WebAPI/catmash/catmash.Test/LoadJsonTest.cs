@@ -11,7 +11,7 @@ namespace catmash.Test
     [TestClass]
     public class LoadJsonTest
     {
-   
+        string _filePath = @"./Ressourses/cats.json";
         IPopulateBDD _populateBDD;
         /// <summary>
         /// initialisation des tests
@@ -31,7 +31,7 @@ namespace catmash.Test
         [TestMethod]
         public void ShouldReadJsonFile()
         {
-            string json = _populateBDD.ReadFile(@"./Ressourses/cats.json");
+            string json = _populateBDD.ReadFile(_filePath);
             Assert.IsNotNull(json);
         }
 
@@ -41,7 +41,7 @@ namespace catmash.Test
         [TestMethod]
         public void ShouldReturnCatsList()
         {
-            List<Cat> catsList = _populateBDD.GetCatsFromFile(@"./Ressourses/cats.json");
+            List<Cat> catsList = _populateBDD.GetCatsFromFile(_filePath);
             Assert.IsTrue(catsList.Count > 0);
         }
     }
