@@ -27,6 +27,8 @@ namespace catmash.Test
             var context = new AppDbContext(options);
             _populateBDD = new PopulateBDDService(context);
             _catService = new CatService(context);
+            _populateBDD.CreateCatsFromFile(_filePath);
+
         }
 
         /// <summary>
@@ -35,9 +37,18 @@ namespace catmash.Test
         [TestMethod]
         public void ShouldGetAllCats()
         {
-            _populateBDD.CreateCatsFromFile(_filePath);
             List<Cat> catsListBDD = _catService.GetCatsList();
             Assert.AreEqual(100, catsListBDD.Count);
+        }
+
+        /// <summary>
+        /// Doit retourner 2 chats en aléatoire
+        /// </summary>
+        [TestMethod]
+        public void ShouldGetTwoRandomCats()
+        {
+            List<Cat> catsListBDD = _catService.GetCatsForVote(2);
+            Assert.AreEqual(2, catsListBDD.Count);
         }
     }
 }
