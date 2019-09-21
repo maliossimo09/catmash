@@ -4,7 +4,7 @@ using catmash.Models;
 
 namespace catmash.IServices
 {
-    public interface IPopulateBDD
+    public interface IPopulateBDDService
     {
         /// <summary>
         /// Récupère le fichier JSON

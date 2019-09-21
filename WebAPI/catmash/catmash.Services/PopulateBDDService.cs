@@ -9,9 +9,9 @@ using System.Linq;
 
 namespace catmash.Services
 {
-    public class PopulateBDD : ServiceBase, IPopulateBDD
+    public class PopulateBDDService : BaseService, IPopulateBDDService
     {
-        public PopulateBDD(AppDbContext dbContext) : base (dbContext)
+        public PopulateBDDService(AppDbContext dbContext) : base (dbContext)
         {
          
         }

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace catmash.Test
 {
     [TestClass]
-    public class LoadJsonTest
+    public class VoteTest
     {
         string _filePath = @"./Ressourses/cats.json";
         IPopulateBDDService _populateBDD;

@@ -5,10 +5,10 @@ using System.Text;
 
 namespace catmash.Services
 {
-    public class ServiceBase
+    public class BaseService
     {
         protected AppDbContext _dbContext;
-        public ServiceBase(AppDbContext dbContext)
+        public BaseService(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
