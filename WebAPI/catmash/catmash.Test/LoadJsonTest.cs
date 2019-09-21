@@ -1,8 +1,10 @@
 using catmash.IServices;
+using catmash.Models;
 using catmash.Repository;
 using catmash.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace catmash.Test
 {
@@ -11,7 +13,9 @@ namespace catmash.Test
     {
    
         IPopulateBDD _populateBDD;
-
+        /// <summary>
+        /// initialisation des tests
+        /// </summary>
         [TestInitialize]
         public void Setup()
         {
@@ -29,6 +33,16 @@ namespace catmash.Test
         {
             string json = _populateBDD.ReadFile(@"./Ressourses/cats.json");
             Assert.IsNotNull(json);
+        }
+
+        /// <summary>
+        /// s'assure de la transformation du fichier json en liste de chats
+        /// </summary>
+        [TestMethod]
+        public void ShouldReturnCatsList()
+        {
+            List<Cat> catsList = _populateBDD.GetCatsFromFile(@"./Ressourses/cats.json");
+            Assert.IsTrue(catsList.Count > 0);
         }
     }
 }
