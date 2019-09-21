@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "catmash.Services", "catmash
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "catmash.Repository", "catmash.Repository\catmash.Repository.csproj", "{A66F2303-308F-41EC-867F-BDD18D388632}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{95563F66-214F-4CDA-919B-2C02C7B55348}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{93931127-7F8A-4741-89AF-0B881C121DA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{179B48B7-47D8-44BB-ABBD-A5FA141C2E87} = {95563F66-214F-4CDA-919B-2C02C7B55348}
+		{FD56A0A2-66DE-4CE7-88BB-E61C9A05E836} = {93931127-7F8A-4741-89AF-0B881C121DA3}
+		{0ACF2ECF-C65B-4013-BB40-81E712FF9DFC} = {93931127-7F8A-4741-89AF-0B881C121DA3}
+		{A66F2303-308F-41EC-867F-BDD18D388632} = {95563F66-214F-4CDA-919B-2C02C7B55348}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {19F31DE9-9E0F-49E8-8189-9D57995361BC}

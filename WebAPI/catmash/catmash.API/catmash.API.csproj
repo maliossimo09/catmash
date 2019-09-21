@@ -13,4 +13,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\catmash.IServices\catmash.IServices.csproj" />
+    <ProjectReference Include="..\catmash.Models\catmash.Models.csproj" />
+    <ProjectReference Include="..\catmash.Services\catmash.Services.csproj" />
+  </ItemGroup>
+
 </Project>
