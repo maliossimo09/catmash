@@ -21,4 +21,10 @@
     <ProjectReference Include="..\catmash.Services\catmash.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Resourses\cats.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
