@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using catmash.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -29,7 +30,10 @@ namespace catmash.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=CatDatabase.db"));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlite("Filename=CatDatabase.db", o =>
+            {
+                o.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

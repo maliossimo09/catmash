@@ -10,16 +10,11 @@ namespace catmash.Repository
         public DbSet<Cat> Cat { get; set; }
 
         public AppDbContext() {
-            this.Database.EnsureCreated();
         }
 
-        /// <summary>
-        /// Ce constructeur sera utilisé pour les tests
-        /// </summary>
-        /// <param name="options"></param>
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
+            this.Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,7 +31,6 @@ namespace catmash.Repository
             {
                 entity.HasKey(e => e.Id);
             });
-
 
             base.OnModelCreating(modelBuilder);
         }
