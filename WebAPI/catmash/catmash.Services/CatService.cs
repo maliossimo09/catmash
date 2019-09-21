@@ -26,6 +26,24 @@ namespace catmash.Services
             return CatService.PickRandom(this.GetCatsList().ToArray(), pNbCats);
         }
 
+        /// <summary>
+        /// Retourne la liste de tous les chats
+        /// </summary>
+        public List<Cat> GetCatsList()
+        {
+            return _dbContext.Cat.ToList();
+        }
+
+
+        /// <summary>
+        /// Retour le chat avec l'id correspondant
+        /// </summary>
+        /// <param name="pId"></param>
+        /// <returns></returns>
+        public Cat GetCatById(string pId)
+        {
+            return _dbContext.Cat.FirstOrDefault(a => a.Id == pId);
+        }
 
         private static List<Cat> PickRandom(Cat[] pCats, int pNbCats)
         {
@@ -50,14 +68,6 @@ namespace catmash.Services
             }
 
             return results;
-        }
-
-        /// <summary>
-        /// Retourne la liste de tous les chats
-        /// </summary>
-        public List<Cat> GetCatsList()
-        {
-            return _dbContext.Cat.ToList();
         }
     }
 }

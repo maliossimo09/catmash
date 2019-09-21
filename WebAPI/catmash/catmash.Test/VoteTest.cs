@@ -50,5 +50,16 @@ namespace catmash.Test
             List<Cat> catsListBDD = _catService.GetCatsForVote(2);
             Assert.AreEqual(2, catsListBDD.Count);
         }
+
+        /// <summary>
+        /// Doit retourner le chat avec l'id tt
+        /// </summary>
+        [TestMethod]
+        public void ShouldGetCatWithttID()
+        {
+            Cat cat = _catService.GetCatById("tt");
+            Assert.AreEqual("tt", cat.Id);
+        }
+
     }
 }

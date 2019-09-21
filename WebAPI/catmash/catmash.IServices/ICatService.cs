@@ -17,5 +17,12 @@ namespace catmash.IServices
         /// <param name="pNbCats">N</param>
         /// <returns>Une liste de chats </returns>
         List<Cat> GetCatsForVote(int pNbCats);
+
+        /// <summary>
+        /// Retour le chat avec l'id correspondant
+        /// </summary>
+        /// <param name="pId"></param>
+        /// <returns></returns>
+        Cat GetCatById(string pId);
     }
 }
