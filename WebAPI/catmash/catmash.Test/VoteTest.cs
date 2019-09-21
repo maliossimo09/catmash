@@ -13,6 +13,8 @@ namespace catmash.Test
     {
         string _filePath = @"./Ressourses/cats.json";
         IPopulateBDDService _populateBDD;
+        ICatService _catService;
+
         /// <summary>
         /// initialisation des tests
         /// </summary>
@@ -24,33 +26,18 @@ namespace catmash.Test
                 .Options;
             var context = new AppDbContext(options);
             _populateBDD = new PopulateBDDService(context);
-        }
-        /// <summary>
-        /// s'assure de la lécture de fichier cats.json
-        /// </summary>
-        [TestMethod]
-        public void ShouldReadJsonFile()
-        {
-            string json = _populateBDD.ReadFile(_filePath);
-            Assert.IsNotNull(json);
+            _catService = new CatService(context);
         }
 
         /// <summary>
-        /// s'assure de la transformation du fichier json en liste de chats
+        /// Doit retourner la liste de tous les chats
         /// </summary>
         [TestMethod]
-        public void ShouldReturnCatsList()
+        public void ShouldGetAllCats()
         {
-            List<Cat> catsList = _populateBDD.GetCatsFromFile(_filePath);
-            Assert.IsTrue(catsList.Count > 0);
-        }
-
-        [TestMethod]
-        public void ShouldAddCatsToDatabase()
-        {
-            List<Cat> catsList = _populateBDD.GetCatsFromFile(_filePath);
-            List<Cat> catsListBDD = _populateBDD.CreateCatsFromFile(_filePath);
-            Assert.AreEqual(catsList.Count, catsListBDD.Count);
+            _populateBDD.CreateCatsFromFile(_filePath);
+            List<Cat> catsListBDD = _catService.GetCatsList();
+            Assert.AreEqual(100, catsListBDD.Count);
         }
     }
 }

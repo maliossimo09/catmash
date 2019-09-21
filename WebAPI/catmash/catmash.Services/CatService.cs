@@ -16,6 +16,12 @@ namespace catmash.Services
          
         }
 
-       
+        /// <summary>
+        /// Retourne la liste de tous les chats
+        /// </summary>
+        public List<Cat> GetCatsList()
+        {
+            return _dbContext.Cat.ToList();
+        }
     }
 }
