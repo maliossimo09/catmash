@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.28917.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "catmash.API", "catmash.API\catmash.API.csproj", "{3D30A3FD-C02F-44DA-BD7C-1E461AC17FBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "catmash.Test", "catmash.Test\catmash.Test.csproj", "{B016B33C-B67D-4806-8497-F28F2C232C73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "catmash.Models", "catmash.Models\catmash.Models.csproj", "{179B48B7-47D8-44BB-ABBD-A5FA141C2E87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3D30A3FD-C02F-44DA-BD7C-1E461AC17FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D30A3FD-C02F-44DA-BD7C-1E461AC17FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D30A3FD-C02F-44DA-BD7C-1E461AC17FBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B016B33C-B67D-4806-8497-F28F2C232C73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B016B33C-B67D-4806-8497-F28F2C232C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B016B33C-B67D-4806-8497-F28F2C232C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B016B33C-B67D-4806-8497-F28F2C232C73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{179B48B7-47D8-44BB-ABBD-A5FA141C2E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179B48B7-47D8-44BB-ABBD-A5FA141C2E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179B48B7-47D8-44BB-ABBD-A5FA141C2E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179B48B7-47D8-44BB-ABBD-A5FA141C2E87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
