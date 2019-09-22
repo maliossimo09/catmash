@@ -22,4 +22,9 @@ export class CatService {
     const url = this.urlSrv.serveurAPI + this._controllerRoute + '/candidates';
     return this.http.get<Array<Cat>>(url);
   }
+
+  public vote(pId: string): Observable<any> {
+    const url = this.urlSrv.serveurAPI + this._controllerRoute + '/vote/' + pId;
+    return this.http.post(url, null);
+  }
 }

@@ -1,12 +1,12 @@
 <mat-grid-list *ngIf="cats.length > 0" style="margin: 1%"  cols="2" rowHeight="2:1.8">
     <mat-grid-tile>
       <div class="CatContainer">
-          <img src="{{cats[0].url}}" alt="image" >
+          <img (click)="vote(cats[0].id)" src="{{cats[0].url}}" alt="image" >
       </div>
     </mat-grid-tile>
     <mat-grid-tile>
       <div class="CatContainer">
-          <img src="{{cats[1].url}}" alt="image">
+          <img (click)="vote(cats[1].id)" src="{{cats[1].url}}" alt="image">
       </div>
     </mat-grid-tile>
 

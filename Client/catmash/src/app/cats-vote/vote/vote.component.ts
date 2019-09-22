@@ -23,5 +23,14 @@ export class VoteComponent implements OnInit {
       
     });
   }
+  private vote(pId: string): void {
+    this.cats = new Array<Cat>();
+    this._catService.vote(pId).subscribe((response) => {
+      this.getCandidates();
+    },
+    error => {
+      
+    });
+  }
 
 }
