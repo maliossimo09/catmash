@@ -1,12 +1,12 @@
-<mat-grid-list style="margin: 1%"  cols="2" rowHeight="2:1.8">
+<mat-grid-list *ngIf="cats.length > 0" style="margin: 1%"  cols="2" rowHeight="2:1.8">
     <mat-grid-tile>
       <div class="CatContainer">
-          <img src="http://24.media.tumblr.com/tumblr_m82woaL5AD1rro1o5o1_1280.jpg" alt="image">
+          <img src="{{cats[0].url}}" alt="image" >
       </div>
     </mat-grid-tile>
     <mat-grid-tile>
       <div class="CatContainer">
-          <img src="http://24.media.tumblr.com/tumblr_m82woaL5AD1rro1o5o1_1280.jpg" alt="image">
+          <img src="{{cats[1].url}}" alt="image">
       </div>
     </mat-grid-tile>
 

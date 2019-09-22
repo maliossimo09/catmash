@@ -8,6 +8,8 @@ import { UrlService } from 'src/shared/services/url-service/url-service.service'
 import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CatService } from 'src/shared/services/cat-service/cat.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,10 +22,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CoreModule,
     MaterialModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule 
   ],
   providers: [
-    UrlService
+    UrlService,
+    CatService
   ],
   bootstrap: [AppComponent]
 })

@@ -30,6 +30,9 @@ namespace catmash.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlite("Filename=CatDatabase.db", o =>
@@ -39,6 +42,7 @@ namespace catmash.API
             
             
             services.AddScoped<ICatService, CatService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,14 +58,22 @@ namespace catmash.API
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
 
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
                 new PopulateBDDService(context, @"./Ressourses/cats.json");
             }
-            
+
+            app.UseCors(builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+
+            app.UseMvc();
+
+
         }
     }
 }

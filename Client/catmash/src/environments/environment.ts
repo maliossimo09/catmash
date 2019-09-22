@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   tag: 'DEV',
-  serveurAPI:'http://localhost:51721'
+  serveurAPI:'http://localhost:51721/api'
 };
 
 /*
