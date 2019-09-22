@@ -5,30 +5,38 @@ using catmash.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace catmash.Test
 {
     [TestClass]
     public class VoteTest
     {
-        string _filePath = @"./Ressourses/cats.json";
-        IPopulateBDDService _populateBDD;
         ICatService _catService;
 
         /// <summary>
         /// initialisation des tests
         /// </summary>
-        [TestInitialize]
-        public void Setup()
+        [ClassInitialize]
+        public static void Setup(TestContext testContext)
         {
+            string filePath = @"./Ressourses/cats.json";
             var options = new DbContextOptionsBuilder<AppDbContext>()
                 .UseInMemoryDatabase(databaseName: "CatsDatabase")
                 .Options;
             var context = new AppDbContext(options);
-            _populateBDD = new PopulateBDDService(context);
-            _catService = new CatService(context);
-            _populateBDD.CreateCatsFromFile(_filePath);
+            IPopulateBDDService populateBDD = new PopulateBDDService(context, filePath);
+        }
 
+        [TestInitialize]
+        public  void SetupForEachTest()
+        {
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+               .UseInMemoryDatabase(databaseName: "CatsDatabase")
+               .Options;
+            var context = new AppDbContext(options);
+
+            _catService = new CatService(context);
         }
 
         /// <summary>
@@ -37,7 +45,7 @@ namespace catmash.Test
         [TestMethod]
         public void ShouldGetAllCats()
         {
-            List<Cat> catsListBDD = _catService.GetCatsList();
+            List<Cat> catsListBDD = _catService.GetCatsList().ToList();
             Assert.AreEqual(100, catsListBDD.Count);
         }
 
@@ -47,7 +55,7 @@ namespace catmash.Test
         [TestMethod]
         public void ShouldGetTwoRandomCats()
         {
-            List<Cat> catsListBDD = _catService.GetCatsForVote(2);
+            List<Cat> catsListBDD = _catService.GetCatsForVote(2).ToList();
             Assert.AreEqual(2, catsListBDD.Count);
         }
 

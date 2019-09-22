@@ -5,6 +5,7 @@ using catmash.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace catmash.Test
 {
@@ -13,6 +14,7 @@ namespace catmash.Test
     {
         string _filePath = @"./Ressourses/cats.json";
         IPopulateBDDService _populateBDD;
+        ICatService _catService;
         /// <summary>
         /// initialisation des tests
         /// </summary>
@@ -20,37 +22,23 @@ namespace catmash.Test
         public void Setup()
         {
             var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseInMemoryDatabase(databaseName: "CatsDatabase")
+                .UseInMemoryDatabase(databaseName: "CatsDatabase2")
                 .Options;
             var context = new AppDbContext(options);
-            _populateBDD = new PopulateBDDService(context);
+            _populateBDD = new PopulateBDDService(context, _filePath);
+            _catService = new CatService(context);
         }
-        /// <summary>
-        /// s'assure de la lécture de fichier cats.json
-        /// </summary>
-        [TestMethod]
-        public void ShouldReadJsonFile()
-        {
-            string json = _populateBDD.ReadFile(_filePath);
-            Assert.IsNotNull(json);
-        }
+        
 
+        
         /// <summary>
-        /// s'assure de la transformation du fichier json en liste de chats
+        /// La base de données doit contenir les 100 chats
         /// </summary>
-        [TestMethod]
-        public void ShouldReturnCatsList()
-        {
-            List<Cat> catsList = _populateBDD.GetCatsFromFile(_filePath);
-            Assert.IsTrue(catsList.Count > 0);
-        }
-
         [TestMethod]
         public void ShouldAddCatsToDatabase()
         {
-            List<Cat> catsList = _populateBDD.GetCatsFromFile(_filePath);
-            List<Cat> catsListBDD = _populateBDD.CreateCatsFromFile(_filePath);
-            Assert.AreEqual(catsList.Count, catsListBDD.Count);
+            List<Cat> catsListBDD = _catService.GetCatsList().ToList();
+            Assert.AreEqual(100, catsListBDD.Count);
         }
     }
 }

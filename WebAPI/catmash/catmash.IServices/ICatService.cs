@@ -9,14 +9,14 @@ namespace catmash.IServices
         /// <summary>
         /// Retourne la liste de tous les chats
         /// </summary>
-        List<Cat> GetCatsList();
+        IEnumerable<Cat> GetCatsList();
 
         /// <summary>
         /// Retourne N chats aléatoires
         /// </summary>
         /// <param name="pNbCats">N</param>
         /// <returns>Une liste de chats </returns>
-        List<Cat> GetCatsForVote(int pNbCats);
+        IEnumerable<Cat> GetCatsForVote(int pNbCats);
 
         /// <summary>
         /// Retour le chat avec l'id correspondant

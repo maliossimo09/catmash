@@ -21,7 +21,7 @@ namespace catmash.Services
         /// </summary>
         /// <param name="pNbCats">N</param>
         /// <returns>Une liste de chats </returns>
-        public List<Cat> GetCatsForVote(int pNbCats)
+        public IEnumerable<Cat> GetCatsForVote(int pNbCats)
         {
             return CatService.PickRandom(this.GetCatsList().ToArray(), pNbCats);
         }
@@ -29,7 +29,7 @@ namespace catmash.Services
         /// <summary>
         /// Retourne la liste de tous les chats
         /// </summary>
-        public List<Cat> GetCatsList()
+        public IEnumerable<Cat> GetCatsList()
         {
             return _dbContext.Cat.ToList();
         }
@@ -45,7 +45,7 @@ namespace catmash.Services
             return _dbContext.Cat.FirstOrDefault(a => a.Id == pId);
         }
 
-        private static List<Cat> PickRandom(Cat[] pCats, int pNbCats)
+        private static IEnumerable<Cat> PickRandom(Cat[] pCats, int pNbCats)
         {
             var rand = new Random();
 

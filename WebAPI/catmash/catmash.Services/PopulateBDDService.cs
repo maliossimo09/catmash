@@ -11,9 +11,9 @@ namespace catmash.Services
 {
     public class PopulateBDDService : BaseService, IPopulateBDDService
     {
-        public PopulateBDDService(AppDbContext dbContext) : base (dbContext)
+        public PopulateBDDService(AppDbContext dbContext,String pFilePath) : base (dbContext)
         {
-         
+            this.CreateCatsFromFile(pFilePath);
         }
 
         /// <summary>
@@ -21,9 +21,11 @@ namespace catmash.Services
         /// </summary>
         /// <param name="pPath"></param>
         /// <returns>Liste des chats ajoutés</returns>
-        public List<Cat> CreateCatsFromFile(string pPath)
+        private IEnumerable<Cat> CreateCatsFromFile(string pPath)
         {
-            List<Cat> catsList = this.GetCatsFromFile(pPath);
+            if (_dbContext.Cat.Any())
+                return _dbContext.Cat.ToList();
+            List<Cat> catsList = this.GetCatsFromFile(pPath).ToList();
             _dbContext.Cat.AddRange(catsList);
             _dbContext.SaveChanges();
             return _dbContext.Cat.ToList();
@@ -34,7 +36,7 @@ namespace catmash.Services
         /// </summary>
         /// <param name="json"></param>
         /// <returns>Liste de Cat</returns>
-        public List<Cat> GetCatsFromFile(string pPath)
+        private IEnumerable<Cat> GetCatsFromFile(string pPath)
         {
             return JObject.Parse(this.ReadFile(pPath))["images"].ToObject<List<Cat>>();
         }
@@ -44,7 +46,7 @@ namespace catmash.Services
         /// </summary>
         /// <param name="pPath">Chemin du fichier à lire</param>
         /// <returns>Le contenu du fichier au format string</returns>
-        public string ReadFile(string pPath)
+        private string ReadFile(string pPath)
         {
             return System.IO.File.ReadAllText(pPath);
         }

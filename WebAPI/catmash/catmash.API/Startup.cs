@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using catmash.IServices;
 using catmash.Repository;
+using catmash.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +36,9 @@ namespace catmash.API
             {
                 o.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
             }));
+            
+            
+            services.AddScoped<ICatService, CatService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +55,13 @@ namespace catmash.API
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+                new PopulateBDDService(context, @"./Ressourses/cats.json");
+            }
+            
         }
     }
 }
