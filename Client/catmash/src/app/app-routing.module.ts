@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CoreComponent } from './core/core.component';
 
 const routes: Routes = [
+  { path: '', redirectTo : 'cats', pathMatch: 'full'},
   {
     path: '',
     component: CoreComponent,
