@@ -16,15 +16,29 @@ export class CatService {
 
   /**
    * @description
-   * récupère deux chats pour faire un vote
+   * API => récupère deux chats pour faire un vote
    */
   public getCandidates(): Observable<Array<Cat>> {
     const url = this.urlSrv.serveurAPI + this._controllerRoute + '/candidates';
     return this.http.get<Array<Cat>>(url);
   }
 
+  /**
+   * @description
+   * API => vote pour le ayant l'id correspondant
+   */
   public vote(pId: string): Observable<any> {
     const url = this.urlSrv.serveurAPI + this._controllerRoute + '/vote/' + pId;
     return this.http.post(url, null);
   }
+
+   /**
+   * @description
+   * API => récupère tous les chats
+   */
+  public getAllCats(): Observable<Array<Cat>> {
+    const url = this.urlSrv.serveurAPI + this._controllerRoute + '/cats';
+    return this.http.get<Array<Cat>>(url);
+  }
+  
 }

@@ -1,3 +1,22 @@
-<p>
-  score works!
-</p>
+<button mat-raised-button color="primary" [routerLink]="['/cats/vote']">
+  Aller au bureau de vote !
+</button>
+<div  class="mat-elevation-z8 ScoreContainer">
+    
+<table mat-table [dataSource]="cats" >
+
+    <ng-container matColumnDef="score">
+      <th mat-header-cell *matHeaderCellDef> Score </th>
+      <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef> Photo </th>
+      <td mat-cell *matCellDef="let element"> <img src="{{element.url}}" alt="image"></td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

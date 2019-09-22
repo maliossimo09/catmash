@@ -1,4 +1,7 @@
-<mat-grid-list *ngIf="cats.length > 0" style="margin: 1%"  cols="2" rowHeight="2:1.8">
+<button mat-raised-button color="primary" [routerLink]="['/cats/score']">
+  Voir les scores
+</button>
+<mat-grid-list *ngIf="cats.length > 0"   cols="2" rowHeight="2:1.8">
     <mat-grid-tile>
       <div class="CatContainer">
           <img (click)="vote(cats[0].id)" src="{{cats[0].url}}" alt="image" >
