@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+.CatContainer {
+    @include mat-elevation(4);
+    border: 1px solid darkslateblue;
+    border-radius: 5px 5px 5px 5px;
+    margin: 10%;
+    width: 80%;
+    height: 80%;
+  }
