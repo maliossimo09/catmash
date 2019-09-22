@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { UrlService } from 'src/shared/services/url-service/url-service.service';
 import { CoreModule } from './core/core.module';
 import { MaterialModule } from './material.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MaterialModule } from './material.module';
     AppRoutingModule,
     CoreModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FontAwesomeModule
   ],
   providers: [
     UrlService
