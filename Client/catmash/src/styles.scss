@@ -1,6 +1,179 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/theming';
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import './shared/styles/themes/catmash.style';
+@import './shared/styles/functions.scss';
+@import './shared/styles/variables.scss';
 @import '../node_modules/@material/animation/functions';
 
+$primary: map-get($lightcolortheme, primary);
+$secondary: map-get($lightcolortheme, accent);
+$error: map-get($lightcolortheme, warn);
 
+$disabled-color: #808080;
+
+body{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow:hidden;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.clickable-item{
+    cursor: pointer;
+}
+
+// Delete arrow of number input
+input[type=number],
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button,
+input[type=time]::-webkit-inner-spin-button, 
+input[type=time]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  -moz-appearance: textfield;
+  margin: 0; 
+}
+
+input{
+    -moz-appearance: textfield;
+}
+
+// ------------------- BUTTONS -------------------
+
+.mat-btn-primary{
+    @include mat-elevation-transition;
+    @include mat-elevation(3);
+    background:  mat-color($primary);
+}
+
+.mat-btn-primary:hover{
+    @include mat-elevation(8);
+}
+
+.mat-btn-secondary{
+    @include mat-elevation-transition;
+    @include mat-elevation(3);
+    background:  mat-color($secondary);
+}
+
+.mat-btn-secondary:hover{
+    @include mat-elevation(8);
+}
+
+.mat-btn-disabled{
+    @include mat-elevation(0);
+    @include mat-elevation-transition;
+    background: transparent;
+    cursor: initial;
+    pointer-events: none;
+    color: $disabled-color;
+}
+
+// ------------------- COLOR BACKGROUND -------------------
+
+.warn-bg{
+    background: mat-color($error);
+    color: white;
+
+    &__deep{
+        button{
+            background: mat-color($error);
+            color: white;
+        }
+    }
+}
+
+.primary-bg{
+    background: mat-color($primary);
+    color: black;
+
+    &__deep{
+        button{
+            background: mat-color($primary);
+            color: black;
+        }
+    }
+}
+
+.accent-bg{
+    background: mat-color($secondary);
+    color: black;
+
+    &__deep{
+        button{
+            background: mat-color($secondary);
+    color: black;
+        }
+    }
+}
+
+.accent-bg-deep{
+    button{
+        background: mat-color($primary);
+        color: black;
+
+        &__deep{
+            button{
+                background: mat-color($primary);
+        color: black;
+            }
+        }
+    }
+}
+
+// ------------------- OTHERS -------------------
+
+.waitingSpan{
+    font-weight: bold;
+}
+
+.invisible{
+    display: none;
+}
+
+textarea{
+    resize: none !important;
+}
+
+.contentDialog{
+    overflow: auto;
+    max-height: 80vh;
+    max-width: 80vw;
+}
+
+.modal-footer-right{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.divider{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.waiting-element{
+    cursor: wait;
+}
+
+.no-action{
+    pointer-events: none;
+}
+
+.circular-animation{
+    animation: spin 1s infinite;
+}
+
+@keyframes spin{
+    100%{transform: rotate((-360deg))}
+}

@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { CoreComponent } from './core.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { MaterialModule } from '../material.module';
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    FontAwesomeModule
   ]
 })
 export class CoreModule { }
