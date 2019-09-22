@@ -5,6 +5,7 @@ import { CoreComponent } from './core.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CatsVoteModule } from '../cats-vote/cats-vote.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RouterModule,
     MaterialModule,
     FontAwesomeModule
+    
   ]
 })
 export class CoreModule { }

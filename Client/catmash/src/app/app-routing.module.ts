@@ -7,6 +7,7 @@ const routes: Routes = [
     path: '',
     component: CoreComponent,
     children: [
+      {path: 'cats', loadChildren: './cats-vote/cats-vote.module#CatsVoteModule'}
     ],
   }
 ];
