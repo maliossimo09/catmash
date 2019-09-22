@@ -1,9 +1,31 @@
 @import '~@angular/material/theming';
 .CatContainer {
     @include mat-elevation(4);
-    border: 1px solid darkslateblue;
+    background: #edf0f3;
+    border: 1.5px solid darkslateblue;
     border-radius: 5px 5px 5px 5px;
     margin: 10%;
     width: 80%;
     height: 80%;
-  }
+    
+}
+
+img {
+    border: 1.5px solid darkslateblue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    width: 50%;
+    height: 50%;
+    margin-top: -25%; 
+    margin-left: -25%;
+    cursor: pointer;
+    &:hover{
+        @include mat-elevation(6);
+        width: 60%;
+        height: 60%;
+        margin-top: -30%; 
+        margin-left: -30%;
+    }
+}
