@@ -1,5 +1,7 @@
+@import '~@angular/material/theming';
 .HeaderContainer{
-    width: 100vw;
+    @include mat-elevation(4);
+    width: 99vw;
     height: 60px;
     z-index: 1000;
     display: flex;
